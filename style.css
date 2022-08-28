@@ -103,6 +103,10 @@ code {
     margin-left: 50px;
 }
 
+.highlight-panel {
+    font-weight: 900;
+}
+
 /* ######################################## */
 
 /* ########## PAGE CONTENT STYLING ########## */
@@ -312,6 +316,23 @@ code {
     /* Font */
     font-size: 16px;
     text-align: center;
+
+    /* Handle New Lines */
+    white-space: pre-wrap;
+}
+
+.text-box-header {
+    /* Size */
+    width: 100%;
+    height: 100%;
+
+    /* Font */
+    font-size: 16px;
+    text-align: center;
+
+    display: inline-block;
+    /* Handle New Lines 
+    white-space: pre-wrap;*/
 }
 
 .uml-description {

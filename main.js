@@ -87,7 +87,7 @@ class Router {
         "#": loadHomeRoute,
         "#docs": loadDocumentationRoute,
         "#diagrams": loadDiagramsRoute,
-        "#guides": loadGuidesRoute,
+        "#manual": loadManualsRoute,
         "#demos": loadDemosRoute,
         "#resources": loadResourcesRoute,
     };
@@ -169,7 +169,8 @@ function loadHomeRoute(routeChanged, docPage){
 
 function loadDocumentationRoute(routeChanged, docPage){
     console.log("Loading documentation route");
-
+    $(".nav-item").removeClass("highlight-panel");
+    $("#document").addClass("highlight-panel");
     // If we just entered this route, change the sidebar.
     if(routeChanged){
         // Get the sidebar
@@ -202,7 +203,7 @@ function loadDocumentationRoute(routeChanged, docPage){
     }
 
     if(docPage.length === 0){
-        $("#content").html("Welcome to docs!");
+        $("#content").load("Docs/docs.html");
     } else if(pageData.data === window.docData || pageData.type === "folder"){
         // Render a 404, there is no doc
         $("#content").html("No page exists");
@@ -262,7 +263,8 @@ function constructDocContent(parent, data){
 /* ########## */
 function loadDiagramsRoute(routeChanged, docPage){
     console.log("Loading diagrams route");
-
+    $(".nav-item").removeClass("highlight-panel");
+    $("#diagrams").addClass("highlight-panel");
     // If we just entered this route, change the sidebar.
     if(routeChanged){
         // Get the sidebar
@@ -281,7 +283,7 @@ function loadDiagramsRoute(routeChanged, docPage){
     }
 
     if(docPage.length === 0){
-        $("#content").html("Welcome to diagrams");
+        $("#content").load("diagrams/diagrams.html");
     } else {
         // Grab the content div and clear it
         const content = $("#content");
@@ -320,6 +322,9 @@ function constructClassDiagram(content, objs, width, height){
 
         if(obj.type === "note"){
             umlObj = makeUMLNote(obj.name, obj.content, {width: obj.width + "px", left: obj.position[0] + "px", top: obj.position[1] + "px"})
+        } 
+        else if(obj.type === "text_box") {
+            umlObj = makeUMLTextBox(obj.name, obj.content, {width: obj.width + "px", height: obj.height + "px", left: obj.position[0] + "px", top: obj.position[1] + "px"})
         } else if(obj.type === "box"){
             umlObj = makeUMLBox(obj.name, {width: obj.width + "px", height: obj.height + "px", left: obj.position[0] + "px", top: obj.position[1] + "px"})
         } else {
@@ -591,6 +596,8 @@ function constructClassDiagram(content, objs, width, height){
 
 /* ########## */
 function loadDemosRoute(routeChanged, docPage){
+    $(".nav-item").removeClass("highlight-panel");
+    $("#demos").addClass("highlight-panel");
     const demos = [
         {
             name: "Basic Setup",
@@ -620,7 +627,7 @@ function loadDemosRoute(routeChanged, docPage){
 
     // Render the route
     if(docPage.length === 0){
-        $("#content").html("Welcome to demos");
+        $("#content").load("demos/demos.html");
     } else {
         // Extract the demo info
         let demoName = docPage[0];
@@ -646,7 +653,9 @@ function loadDemosRoute(routeChanged, docPage){
 }
 
 /* ########## */
-function loadGuidesRoute(routeChanged, docPage){
+function loadManualsRoute(routeChanged, docPage){
+    $(".nav-item").removeClass("highlight-panel");
+    $("#manual").addClass("highlight-panel");
     const demos = [
         {
             name: "Basic Setup",
@@ -672,7 +681,7 @@ function loadGuidesRoute(routeChanged, docPage){
         // Fill the sidebar with the list of guides
         for(let demo of demos){
             // Create a new file
-            let file = makeFile(demo.link, "guides/", demo.name);
+            let file = makeFile(demo.link, "manual/", demo.name);
         
             // Append it to the parent element
             sidebar.append(file);
@@ -681,7 +690,7 @@ function loadGuidesRoute(routeChanged, docPage){
 
     // Render the route
     if(docPage.length === 0){
-        $("#content").html("Welcome to Guides");
+        $("#content").load("manual/manual.html");
     } else {
         // Extract the demo info
         let demoName = docPage[0];
@@ -698,7 +707,7 @@ function loadGuidesRoute(routeChanged, docPage){
         console.log(demo.page);
 
         if(demo !== null){
-            $("#content").load("guides/" + demo.page);
+            $("#content").load("manual/" + demo.page);
         } else {
             content.html("No page exists");
         }
@@ -708,6 +717,8 @@ function loadGuidesRoute(routeChanged, docPage){
 
 /* ########## */
 function loadResourcesRoute(routeChanged, docPage){
+    $(".nav-item").removeClass("highlight-panel");
+    $("#resources").addClass("highlight-panel");
     if(routeChanged){
         // Get the sidebar
         const sidebar = $("#sidebar");
@@ -718,7 +729,7 @@ function loadResourcesRoute(routeChanged, docPage){
 
     $("#content").empty();
 
-    $("#content").load("resources.html");
+    $("#content").load("resources/resources.html");
 
 }
 
@@ -901,6 +912,20 @@ function makeUMLNote(name, content, sizeAndPosition){
 
 function makeUMLBox(name, sizeAndPosition){
     const umlBox = $(`<div id=${name} class="uml-box code"></div>`);
+
+    for(let key in sizeAndPosition){
+        umlBox.css(key, sizeAndPosition[key]);
+    }
+
+    return umlBox;
+}
+
+function makeUMLTextBox(name, content, sizeAndPosition){
+    const umlHeader = $(`<div class="text-box-header"><div>${replaceReferences(content)}</div></div>`);
+
+    const umlBox = $(`<div id=${name} class="uml-box code"></div>`);
+
+    umlBox.append(umlHeader);
 
     for(let key in sizeAndPosition){
         umlBox.css(key, sizeAndPosition[key]);

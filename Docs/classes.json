@@ -1854,5 +1854,192 @@
                 "element": null
             }
         ]
+    }, 
+    {
+        "name": "Test Diagram",
+        "sidebar": "test",
+        "size": [
+            1600,
+            1200
+        ],
+        "data": [
+            {
+                "name": "EventQueue",
+                "type": "text_box",
+                "content": "EventQueue",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    50,
+                    50
+                ],
+                "width": 500,
+                "height": 200,
+                "element": null
+            },
+            {
+                "name": "Receiver",
+                "type": "text_box",
+                "content": "Receiver",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    90,
+                    100
+                ],
+                "width": 200,
+                "height": 70,
+                "element": null
+            },
+            {
+                "name": "Emitter",
+                "type": "text_box",
+                "content": "Emitter",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    310,
+                    100
+                ],
+                "width": 200,
+                "height": 70,
+                "element": null
+            },
+            {
+                "name": "AI",
+                "type": "text_box",
+                "content": "AI",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    700,
+                    50
+                ],
+                "width": 500,
+                "height": 200,
+                "element": null
+            },
+            {
+                "name": "GoapAI",
+                "type": "text_box",
+                "content": "Goap AI",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    740,
+                    100
+                ],
+                "width": 200,
+                "height": 100,
+                "element": null
+            },
+            {
+                "name": "StateMachine",
+                "type": "text_box",
+                "content": "State Machine",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    960,
+                    100
+                ],
+                "width": 200,
+                "height": 100,
+                "element": null
+            },
+            {
+                "name": "PhysicsManager",
+                "type": "text_box",
+                "content": "Physics Manager",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    800,
+                    400
+                ],
+                "width": 500,
+                "height": 200,
+                "element": null
+            },
+            {
+                "name": "GameNodes",
+                "type": "text_box",
+                "content": "Game Nodes",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    200,
+                    400
+                ],
+                "width": 500,
+                "height": 200,
+                "element": null
+            },
+            {
+                "name": "CanvasNodes",
+                "type": "text_box",
+                "content": "Canvas Nodes",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    225,
+                    425
+                ],
+                "width": 450,
+                "height": 150,
+                "element": null
+            },
+            {
+                "name": "Sprites",
+                "type": "text_box",
+                "content": "Sprites",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    255,
+                    450
+                ],
+                "width": 175,
+                "height": 70,
+                "element": null
+            },
+            {
+                "name": "Graphics",
+                "type": "text_box",
+                "content": "Graphics",
+                "extends": null,
+                "implements": [],
+                "related": [],
+                "lines": [],
+                "position": [
+                    460,
+                    450
+                ],
+                "width": 175,
+                "height": 70,
+                "element": null
+            }
+            
+        ]
     }
 ]
